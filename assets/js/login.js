@@ -12,3 +12,4 @@ signInButton.addEventListener('click',()=>{
     signUpForm.style.display='none';
     signInForm.style.display='block';
 })
+
