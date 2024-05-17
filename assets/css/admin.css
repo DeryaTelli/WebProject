@@ -1,0 +1,230 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Menü öğelerini sağa ve sola yasla */
+    align-items: center;
+    background-color: rgb(33, 130, 130);
+    color: white;
+    padding: 10px 20px;
+}
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.navbar .nav-links a:hover {
+    text-decoration: underline;
+}
+
+.navbar .search-box {
+    position: relative;
+    flex-grow: 1;
+    max-width: 500px;
+}
+
+.navbar .search-box input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.navbar .search-box button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 6px 10px;
+    background: rgb(23, 172, 172);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.gallery {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+}
+
+.gallery::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery .item {
+    flex: 0 0 auto;
+    margin-right: 10px;
+    width: 200px;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+}
+
+.gallery .item img {
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gallery .item p {
+    text-align: center;
+    color: #666;
+    margin-top: 5px;
+}
+
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: cyan;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.scroll-button.left {
+    left: 0;
+}
+
+.scroll-button.right {
+    right: 0;
+}
+
+.scroll-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    margin-top: 20px; /* Navbar ile arasına biraz boşluk bırakmak için */
+}
+
+.upload-div h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.status-msg {
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 10px;
+    border: 1px solid #d6e9c6;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-control[type="file"] {
+    padding: 3px;
+}
+
+.form-control[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.form-control[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.row {
+    margin-top: 20px;
+}
+
+.row h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.gallery {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.gallery .item {
+    width: calc(33.333% - 10px);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.gallery .item img {
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gallery .item p {
+    color: #666;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .gallery .item {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery .item {
+        width: 100%;
+    }
+}
