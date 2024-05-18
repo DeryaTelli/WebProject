@@ -10,7 +10,7 @@ class file extends CI_Model
     }
 
     public function getRows($id=''){
-        $this->db->select('id,file_name,uploaded_on');
+        $this->db->select('id,file_name,title,uploaded_on');
         $this->db->from('files');
         if($id){
             $this->db->where('id',$id);
@@ -27,5 +27,21 @@ class file extends CI_Model
         $insert=$this->db->insert_batch('files',$data);
         return $insert?true:false;
     }
+
+    public function delete($id){
+        $this->db->where('id', $id);
+        $this->db->delete('files');
+        return $this->db->affected_rows() > 0;
+    }
+
+    public function searchFiles($searchTerm) {
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->like('title', $searchTerm);
+        $this->db->or_like('file_name', $searchTerm);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
 }
 ?>

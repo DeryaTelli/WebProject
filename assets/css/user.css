@@ -64,7 +64,6 @@ body {
     border-bottom-right-radius: 3px;
 }
 
-
 .gallery {
     display: flex;
     overflow-x: auto;
@@ -118,4 +117,11 @@ body {
 
 .scroll-button:hover {
     background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Arama sonucu bulunan fotoğraf için stil */
+.highlight {
+    border: 2px solid #23acad;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
 }
