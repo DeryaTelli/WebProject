@@ -1,3 +1,5 @@
+/* assets/css/admin.css */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -5,95 +7,143 @@ body {
     padding: 0;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    position: relative;
-}
-
 .navbar {
-    display: flex;
-    justify-content: space-between; /* Menü öğelerini sağa ve sola yasla */
-    align-items: center;
-    background-color: rgb(33, 130, 130);
-    color: white;
+    background-color: #333;
+    overflow: hidden;
     padding: 10px 20px;
 }
 
-.navbar .nav-links {
-    display: flex;
-    align-items: center;
-}
-
 .navbar .nav-links a {
-    color: white;
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 20px;
     text-decoration: none;
-    margin-left: 20px;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .navbar .nav-links a:hover {
-    text-decoration: underline;
+    background-color: #ddd;
+    color: black;
 }
 
 .navbar .search-box {
-    position: relative;
-    flex-grow: 1;
-    max-width: 500px;
+    float: right;
 }
 
 .navbar .search-box input[type="text"] {
-    width: 100%;
-    padding: 5px;
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
     border: none;
-    border-radius: 3px;
-    box-sizing: border-box;
 }
 
 .navbar .search-box button {
-    position: absolute;
-    right: 0;
-    top: 0;
     padding: 6px 10px;
-    background: rgb(23, 172, 172);
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
     border: none;
-    color: white;
     cursor: pointer;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
 }
+
+.navbar .search-box button:hover {
+    background: #ccc;
+}
+
+.container {
+    padding: 20px;
+}
+
+.status-msg {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.status-msg.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-msg.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.upload-div,
+.user-management {
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-div h3,
+.user-management h3 {
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
 
 .gallery {
-    display: flex;
-    overflow-x: auto;
-    padding: 20px 0;
-    scroll-behavior: smooth;
-}
-
-.gallery::-webkit-scrollbar {
-    display: none;
+    list-style: none;
+    padding: 0;
 }
 
 .gallery .item {
-    flex: 0 0 auto;
-    margin-right: 10px;
-    width: 200px;
-    box-sizing: border-box;
-    scroll-snap-align: start;
+    display: inline-block;
+    margin: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .gallery .item img {
-    max-width: 100%;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
 }
 
-.gallery .item p {
-    text-align: center;
-    color: #666;
-    margin-top: 5px;
+.delete-button {
+    color: #3c763d;
+    text-decoration: none;
 }
+
+.delete-button:hover {
+    text-decoration: underline;
+}
+
+.back-button {
+    float: left;
+    margin-right: 20px;
+}
+
+.logout-button {
+    float: right;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 
 .scroll-button {
     position: absolute;
@@ -171,14 +221,14 @@ body {
 }
 
 .form-control[type="submit"] {
-    background-color: #007bff;
+    background-color:#3c763d;
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
 .form-control[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #3c763d;
 }
 
 .row {

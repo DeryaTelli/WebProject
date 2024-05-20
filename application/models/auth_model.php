@@ -53,6 +53,31 @@
                 redirect(base_url('Auth'));
             }
         }
+
+       // public function getAllUsers() {
+        //    $query = $this->db->get('user_form'); 
+        //    return $query->result_array();
+       // }
+        public function getAllUsersByRole($role) {
+        $query = $this->db->get_where('user_form', array('user_type' => $role));
+        return $query->result_array();
+    }
+    
+        public function deleteUser($id) {
+            return $this->db->delete('user_form', array('id' => $id)); 
+        }
+
+        public function getUserById($id) {
+            $query = $this->db->get_where('user_form', array('id' => $id));
+            return $query->row_array();
+        }
+        
+        public function update_user($id, $data) {
+            $this->db->where('id', $id);
+            return $this->db->update('user_form', $data); 
+        }
+        
+        
         
     }
 

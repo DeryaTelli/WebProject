@@ -11,14 +11,16 @@
 <div class="navbar">
     <div class="nav-links">
         <a href="<?php echo base_url('Auth/logout'); ?>" class="logout-button">Logout</a>
+        <a href="<?php echo base_url('Auth/userManagement'); ?>" class="user-management-button">User Management</a>
     </div>
     <div class="search-box">
-    <form method="post" action="<?php echo base_url('Auth/searchAdmin'); ?>">
-    <input type="text" name="search" placeholder="Search...">
-    <button type="submit">Search</button>
-    </form>
+        <form method="post" action="<?php echo base_url('Auth/searchAdmin'); ?>">
+            <input type="text" name="search" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
     </div>
 </div>
+
 <div class="container">
     <div class="upload-div">
         <h3>Upload Multiple Files And Images</h3>

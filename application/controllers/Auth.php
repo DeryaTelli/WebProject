@@ -101,6 +101,71 @@ class Auth extends CI_Controller {
 		$this->load->view('Auth/adminPage', $data);
 	}
 
+	//kullanicilerimizin yönetim sayfası
+	//public function userManagement() {
+	//	$data['users'] = $this->auth_model->getAllUsers(); 
+	//	$this->load->view('Auth/userManagement', $data);
+	//}
+
+	public function userManagement() {
+		$data['users'] = $this->auth_model->getAllUsersByRole('user');
+		$this->load->view('Auth/userManagement', $data);
+	}
+	
+	
+	public function deleteUser($id) {
+		if($this->auth_model->deleteUser($id)) {
+			$this->session->set_flashdata('success', 'User deleted successfully.');
+		} else {
+			$this->session->set_flashdata('error', 'Some problem occurred, please try again.');
+		}
+		redirect('auth/userManagement');
+	}
+	
+	//public function editUser($id) {
+	//	$data['user'] = $this->auth_model->getUserById($id);
+	//	$this->load->view('Auth/editUser', $data);
+	//}
+	public function editUser($id) {
+		// User modelini yükle
+		$this->load->model('auth_model');
+	
+		// Kullanıcı verisini al
+		$user = $this->auth_model->getUserById($id);
+	
+		// Veriyi kontrol et ve görünümü yükle
+		if (!empty($user)) {
+			$data['user'] = $user;
+			$this->load->view('Auth/editUser', $data);
+		} else {
+			$this->session->set_flashdata('error', 'User not found.');
+			redirect('Auth/userManagement');
+		}
+	}
+	
+	
+	public function updateUser() {
+		$id = $this->input->post('id');
+		$data = array(
+			'name' => $this->input->post('name'),
+			'email' => $this->input->post('email')
+		);
+	
+		// Kullanıcı modelini yükle
+		$this->load->model('auth_model');
+	
+		// Kullanıcının mevcut user_type değerini veritabanından çek
+		$user = $this->auth_model->getUserById($id);
+		$data['user_type'] = $user['user_type']; 
+	
+		if($this->auth_model->update_user($id, $data)) {
+			$this->session->set_flashdata('success', 'User updated successfully.');
+		} else {
+			$this->session->set_flashdata('error', 'Some problems occurred, please try again.');
+		}
+		redirect('auth/userManagement');
+	}
+	
 
 	public function addComment() {
 		$file_id = $this->input->post('file_id');
