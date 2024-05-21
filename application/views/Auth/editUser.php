@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/editUser.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/edituser1.css">
 </head>
 <body>
 <div class="navbar">

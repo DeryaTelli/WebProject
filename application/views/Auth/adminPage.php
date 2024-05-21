@@ -1,11 +1,10 @@
-<!-- application/views/Auth/adminPage.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/admin2.css">
 </head>
 <body>
 <div class="navbar">
@@ -19,8 +18,28 @@
             <button type="submit">Search</button>
         </form>
     </div>
+    <div class="notification-icon" onclick="toggleNotification()">
+        <span class="notification-count"><?php echo $newCommentCount; ?></span>
+        &#128276;
+        <div class="notification-popup" id="notification-popup">
+            <h4>Yeni Bildirimler</h4>
+            <?php if(!empty($comments)) {
+                foreach($comments as $comment) { ?>
+                    <div class="notification-item">
+                        <p><?php echo $comment['comment']; ?> (<?php echo $comment['user_name']; ?>)</p>
+                        <form method="post" action="<?php echo base_url('Auth/adminPage'); ?>">
+                        <input type="hidden" name="commentId" value="<?php echo $comment['id']; ?>">
+                        <button type="submit" name="notificationRead">Okundu</button>
+                        </form>
+                        <p>Yorum yapıldı: <?php echo $comment['created_at']; ?></p>
+                        <p>Dosya: <?php echo $comment['title']; ?></p>
+                    </div>
+            <?php } } else { ?>
+                <p>Henüz bildirim yok.</p>
+            <?php } ?>
+        </div>
+    </div>
 </div>
-
 <div class="container">
     <div class="upload-div">
         <h3>Upload Multiple Files And Images</h3>
@@ -58,5 +77,26 @@
         </div>
     </div>
 </div>
+<script>
+    function toggleNotification() {
+        var popup = document.getElementById("notification-popup");
+        popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+
+        // Reset notification count when popup is opened
+        if (popup.style.display === 'block') {
+            document.querySelector('.notification-count').textContent = '0';
+        }
+    }
+
+    // Close the popup when clicking outside
+    window.onclick = function(event) {
+        if (!event.target.closest('.notification-icon')) {
+            var popup = document.getElementById("notification-popup");
+            if (popup.style.display === 'block') {
+                popup.style.display = 'none';
+            }
+        }
+    }
+</script>
 </body>
 </html>

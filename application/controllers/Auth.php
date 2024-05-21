@@ -96,9 +96,40 @@ class Auth extends CI_Controller {
 				$statusMsg = "Please select a file to upload.";
 			}
 		}
+		
+		
+		if ($this->input->post('notificationRead')) {
+			$commentId = $this->input->post('commentId');
+			$this->comment_model->markAsRead($commentId);
+		}
+		
+		// Bildirimi okundu olarak işaretleme
+		if ($this->input->post('notificationRead')) {
+			$commentId = $this->input->post('commentId');
+			$this->load->model('comment_model');
+			$result = $this->comment_model->markAsRead($commentId);
+			if ($result) {
+				$this->session->set_flashdata('success', 'Bildirim okundu olarak işaretlendi.');
+			} else {
+				$this->session->set_flashdata('error', 'Bildirim işaretlenirken bir hata oluştu.');
+			}
+		}
+
+		// Yorumları veritabanından al
+		$this->load->model('comment_model');
+		$data['comments'] = $this->comment_model->getComments();
+
+		// Tüm yorumların sayısını bildirime aktar
+		$data['newCommentCount'] = count($data['comments']);
+
 		$data['files'] = $this->file->getRows();
 		$data['statusMsg'] = $statusMsg;
 		$this->load->view('Auth/adminPage', $data);
+	
+	
+	    
+
+	
 	}
 
 	//kullanicilerimizin yönetim sayfası
