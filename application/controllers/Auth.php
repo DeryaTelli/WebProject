@@ -197,7 +197,7 @@ class Auth extends CI_Controller {
 		redirect('auth/userManagement');
 	}
 	
-
+    /*
 	public function addComment() {
 		$file_id = $this->input->post('file_id');
 		$comment = $this->input->post('comment');
@@ -211,6 +211,25 @@ class Auth extends CI_Controller {
 		}
 		redirect('Auth/userPage');
 	}
+    */
+	public function addComment() {
+        $file_id = $this->input->post('file_id');
+        $comment = $this->input->post('comment');
+        $user_id = 1; // Geçerli bir user_id değeri belirtin
+        
+        if (!empty($file_id) && !empty($comment) && !empty($user_id)) {
+            $data = array(
+                'file_id' => $file_id,
+                'user_id' => $user_id,
+                'comment' => $comment,
+                'created_at' => date('Y-m-d H:i:s'),
+                'read_status' => 0
+            );
+            $this->fileUser->addComment($data);
+        }
+        redirect('Auth/userPage');
+    }
+
 
 	public function __construct() {
         parent::__construct();
